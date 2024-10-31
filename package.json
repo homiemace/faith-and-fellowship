@@ -1,5 +1,5 @@
 {
-	"name": "monke-mob",
+	"name": "faith-and-fellowship",
 	"version": "0.0.1",
 	"private": true,
 	"scripts": {
@@ -12,7 +12,7 @@
 		"format": "prettier --write ."
 	},
 	"devDependencies": {
-		"@sveltejs/adapter-vercel": "^5.4.5",
+		"@sveltejs/adapter-vercel": "^5.4.6",
 		"@sveltejs/kit": "^2.7.1",
 		"@sveltejs/vite-plugin-svelte": "^3.1.2",
 		"@types/eslint": "9.6.1",
