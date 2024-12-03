@@ -2,6 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Font Faces */
 @font-face {
   font-family: 'Muli';
   src: url('/fonts/Muli.ttf') format('truetype');
@@ -72,97 +73,145 @@
   font-style: italic;
 }
 
-@layer components {
-  body {
-    font-family: "Muli", sans-serif;
-    background-color: #111827;
-    position: relative;
+@font-face {
+  font-family: 'PlayfairDisplay';
+  src: url('/fonts/PlayfairDisplay-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@layer base {
+  :root {
+    --color-brand: 17, 24, 39;
+    --color-brand-secondary: 122, 40, 138;
+    --color-brand-third: 203, 126, 218;
+    --color-background: 17, 24, 39;
+    --color-text: 255, 255, 255;
+    --color-text-secondary: 229, 229, 229;
+    --transition-speed: 300ms;
+    --blur-amount: 8px;
   }
 
+  html {
+    @apply h-full antialiased;
+    scroll-behavior: smooth;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  body {
+    @apply h-full min-h-screen w-full overflow-x-hidden bg-background font-muli text-primary relative;
+  }
+
+  #app {
+    @apply min-h-screen w-full m-0 p-0;
+  }
+
+  a {
+    @apply font-medium text-brand no-underline outline-none transition-colors duration-300;
+  }
+
+  a:hover {
+    @apply text-white;
+  }
+}
+
+@layer components {
+  /* Layout Components */
+  .container-fluid {
+    @apply w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+
+  .page-section {
+    @apply py-12 md:py-20;
+  }
+
+  /* Background Components */
+  .homepage-background {
+    @apply fixed inset-0 scale-110;
+    background-image: url('/images/faithandfellowshipbackground.webp');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    filter: blur(var(--blur-amount));
+    -webkit-filter: blur(var(--blur-amount));
+  }
+
+  .about-us-background {
+    @apply fixed inset-0 bg-gradient-to-r from-[#6b5b95] to-[#b3cde0] -z-10;
+  }
+
+  .overlay {
+    @apply fixed inset-0 bg-black/40 -z-10;
+  }
+
+  /* UI Components */
+  .btn {
+    @apply inline-block px-6 py-3 rounded-full font-semibold text-primary transition-all duration-300;
+  }
+
+  .btn-primary {
+    @apply bg-gradient-to-r from-brand to-brandSecondary hover:shadow-lg hover:scale-105;
+  }
+
+  .card {
+    @apply bg-background/5 backdrop-blur-lg rounded-xl shadow-lg p-6 
+           hover:shadow-xl transition-all duration-300 hover:scale-105
+           border border-gray-100/5;
+  }
+
+  .nav-link {
+    @apply relative text-primary hover:text-brand transition-colors duration-300;
+  }
+
+  /* Animation Components */
   .fade-in {
-    opacity: 0;
-    transition: opacity 0.5s ease-in-out;
+    @apply opacity-0 transition-opacity duration-500 ease-in-out;
   }
 
   .fade-in.visible {
-    opacity: 1; /* Fade in effect */
+    @apply opacity-100;
   }
 
-  #code-popup {
-    max-width: 150px;
-    transition: opacity 0.3s ease; /* Smooth show/hide */
-  }
-
-  a:focus {
-    outline: none;
-  }
-
+  /* Typography Components */
   .text-shadow {
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
   }
 
-  .homepage-background {
-    background-image: url('/images/faithandfellowshipbackground.jpg');/* Use relative path */
-    background-size: cover; /* Makes the background image cover the entire area */
-    background-position: center; /* Centers the background image */
-    background-repeat: no-repeat; /* Prevents the image from repeating */
-    width: 100vw; /* Full viewport width */
-    height: 100%; /* Full viewport height */
-    position: absolute; /* Allows it to fill the space behind other content */
-    top: 0; /* Aligns to the top */
-    left: 0; /* Aligns to the left */
-    z-index: -1; /* Places it behind other content */
-    filter: blur(8px); /* Adjust the blur amount as needed */
-    -webkit-filter: blur(8px); /* For Safari support */
-  }
-
   .quote {
-    font-size: 1.25rem;
-    font-style: italic;
-    color: #333;
-    margin: 1.5rem 0;
-    padding: 1rem;
-    border-left: 4px solid #007bff;
-    background-color: #f9f9f9;
+    @apply text-xl italic text-gray-700 my-6 p-4 border-l-4 border-brand bg-gray-50;
   }
 
   .citation {
-    text-align: right; /* Align citation to the right */
-    font-size: 1rem; /* Smaller font size */
-    color: #555; /* Slightly lighter color for differentiation */
+    @apply text-right text-base text-gray-600;
   }
 
-  .overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: rgba(
-      0,
-      0,
-      0,
-      0.4
-    ); /* Darker overlay for less brightness */
-    z-index: -1; /* Places the overlay behind other content */
-  }
-
-  h1,
-  h2 {
-    color: #6a0dad; /* Match your purple theme */
-  }
-
-  a:hover {
-    color: #7a288a; /* Slightly darker purple on hover */
-  }
-
-  a {
-    outline: none; /* Remove the default focus outline */
-  }
-
-  p,
-  span,
-  div {
-    color: #ffffff; /* Darker text for better readability */
+  /* Popup Components */
+  #code-popup {
+    @apply max-w-[150px] transition-opacity duration-300 ease-in-out;
   }
 }
+
+@layer utilities {
+  .text-gradient {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-brand to-brandSecondary;
+  }
+
+  .bg-gradient {
+    @apply bg-gradient-to-br from-background via-backgroundSecondary to-background-900;
+  }
+
+  .backdrop-blur {
+    backdrop-filter: blur(var(--blur-amount));
+    -webkit-backdrop-filter: blur(var(--blur-amount));
+  }
+
+  .hover-scale {
+    @apply hover:scale-105 transition-transform duration-300;
+  }
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-20px); }
+  }
+}
+
