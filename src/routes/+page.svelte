@@ -41,8 +41,8 @@
 
 <div class="homepage-background"></div>
 
-<div class="flex flex-col min-h-[calc(100vh-4rem)] justify-between w-full relative">
-    <div class="flex-1 flex flex-col items-center w-full relative overflow-hidden mt-24 px-4">
+<div class="flex flex-col min-h-[calc(100vh-4rem)] justify-between w-full relative overflow-x-hidden">
+    <div class="flex-1 flex flex-col items-center w-full relative overflow-hidden mt-24 px-2 sm:px-4">
 
         <section class="flex flex-col justify-center items-center text-center w-full py-12 md:py-24 relative z-10">
             <h2 class="text-4xl md:text-6xl lg:text-8xl font-extrabold mb-4 select-none text-white text-shadow-lg">Make Heaven Crowded</h2>
@@ -51,7 +51,7 @@
 
             <div class="mb-12">
                 <button
-                    class="group relative inline-flex h-12 items-center justify-center overflow-hidden rounded-full btn btn-primary hover-scale bg-brand px-20 font-medium text-white shadow-lg transition-all duration-300 hover:scale-105 hover:shadow-xl"
+                    class="group relative inline-flex h-12 items-center justify-center overflow-hidden rounded-full btn btn-primary hover-scale bg-brand px-4 sm:px-20 font-medium text-white shadow-lg transition-all duration-300 hover:scale-105 hover:shadow-xl w-full sm:w-auto"
                     on:click={() => {
                         window.location.href = "/calendar";
                     }}
@@ -63,9 +63,9 @@
                 </button>
             </div>
 
-            <section class="py-4 md:py-8 px-4 md:px-6 text-center relative z-10">
+            <section class="py-4 md:py-8 px-2 sm:px-4 md:px-6 text-center relative z-10">
                 <h3 class="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 select-none text-white text-shadow-lg">Daily Inspiration for Your Journey</h3>
-                <blockquote class="p-6 md:p-8 text-white-900 italic text-shadow-lg max-w-xl mx-auto h-full flex flex-col justify-between" style="line-height: 1.8;">
+                <blockquote class="p-4 sm:p-6 md:p-8 text-white-900 italic text-shadow-lg max-w-xl mx-auto h-full flex flex-col justify-between" style="line-height: 1.8; word-wrap: break-word;">
                     {#if isLoading}
                         <div class="flex justify-center items-center h-full">
                             <span class="loader"></span>
@@ -117,4 +117,14 @@
     .text-shadow-lg {
         text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
     }
+    :global(.homepage-background) {
+        @apply fixed inset-0 scale-110;
+        background-image: url('/images/faithandfellowshipbackground.webp');
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        filter: blur(var(--blur-amount));
+        -webkit-filter: blur(var(--blur-amount));
+    }
 </style>
+

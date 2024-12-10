@@ -21,16 +21,23 @@
     }
 </script>
 
+<svelte:head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+</svelte:head>
+
 <ToastConfig />
 
 <div class="flex flex-col min-h-screen">
     <Header />
     <PageBackground {currentPage} />
 
-    <main class="flex-1 flex flex-col z-10 max-w-full p-4 md:p-8">
-        <slot />
+    <main class="flex-1 flex flex-col z-10 w-full overflow-x-hidden p-4 md:p-8">
+        <div class="w-full max-w-full">
+            <slot />
+        </div>
     </main>
 
     <CodePopup {showPopup} onClose={closePopup} />
     <Footer onCodeClick={togglePopup} />
 </div>
+
