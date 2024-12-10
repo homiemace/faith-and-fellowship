@@ -1,125 +1,112 @@
 <script lang="ts">
     import { onMount } from "svelte";
-  
+
     let navLinks = [
-      { name: "Home", href: "/" },
-      { name: "About", href: "/about" },
-      { name: "Announcements", href: "/announcements" },
-      { name: "Verse Search", href: "/bible-search" },
-      { name: "Contact", href: "/contact" },
+        { name: "Home", href: "/" },
+        { name: "About", href: "/about" },
+        { name: "Calendar", href: "/calendar" },
+        { name: "Verse Search", href: "/bible-search" },
+        { name: "Contact", href: "/contact" },
     ];
-  
+
     let showMenu = false;
-  
+
     function toggleMenu() {
-      showMenu = !showMenu;
+        showMenu = !showMenu;
     }
-  
+
     onMount(() => {
-      function closeMenu(event: MouseEvent) {
-        const target = event.target as Element;
-        if (!target.closest(".dropdown")) {
-          showMenu = false;
-        }
-      }
-  
-      document.addEventListener("click", closeMenu);
-      return () => {
-        document.removeEventListener("click", closeMenu);
-      };
+        const closeMenu = (event: MouseEvent) => {
+            const target = event.target as Element;
+            if (!target.closest(".dropdown")) {
+                showMenu = false;
+            }
+        };
+
+        document.addEventListener("click", closeMenu);
+        return () => {
+            document.removeEventListener("click", closeMenu);
+        };
     });
-  </script>
-  
-  <div class="relative z-20 dropdown">
-    <header
-      class="flex justify-end items-center p-6 bg-background text-white border-b border-gray-100/5 select-none"
-      style="font-family: 'Muli', sans-serif;"
-    >
-      <div class="flex items-center space-x-4">
-        <nav class="hidden md:flex space-x-4">
-          {#each navLinks as link}
-            <a
-              href={link.href}
-              class="text-white hover:text-brand transition duration-200"
-              >{link.name}</a
-            >
-          {/each}
-        </nav>
-  
-        <button
-          class="hamburger md:hidden"
-          on:click|preventDefault={toggleMenu}
-          aria-label="Toggle Menu"
-        >
-          <i
-            class={`fas fa-cross text-white text-3xl glow-effect ${showMenu ? "active" : ""}`}
-            style="filter: {showMenu ? 'drop-shadow(0 0 10px rgba(255, 255, 255, 0.7))' : 'none'};"
-          ></i>
-        </button>
-      </div>
+</script>
+
+<div class="relative z-20 dropdown">
+    <header class="flex justify-between items-center p-6 bg-background text-white border-b border-gray-100/5">
+        <a href="/" class="text-base font-bold text-white hover:text-brand transition duration-200">417 Faith & Fellowship</a>
+        <div class="flex items-center space-x-4">
+            <nav class="hidden md:flex space-x-4">
+                {#each navLinks as link}
+                    <a href={link.href} class="text-white hover:text-brand transition duration-200 text-base relative py-2 px-1 after:absolute after:bottom-0 after:left-0 after:w-full after:h-0.5 after:bg-brand after:transform after:scale-x-0 after:transition-transform after:duration-300 hover:after:scale-x-100">
+                        {link.name}
+                    </a>
+                {/each}
+            </nav>
+
+            <button class="md:hidden focus:outline-none group" on:click|preventDefault={toggleMenu} aria-label="Toggle Menu">
+                <i class="fas fa-cross text-white text-3xl transition-all duration-300 ease-in-out group-hover:text-white"></i>
+            </button>
+        </div>
     </header>
-  
-    <div
-      class={`absolute top-full right-0 bg-background z-30 transition-all duration-200 ease-in-out ${showMenu ? "max-h-60 opacity-100 overflow-y-auto pointer-events-auto" : "max-h-0 opacity-0 pointer-events-none"}`}
-      style="width: auto; border-bottom-left-radius: 8px;"
-    >
-      <div class="flex flex-col">
-        {#each navLinks as link}
-          <a
-            href={link.href}
-            class="text-white hover:text-brand p-2 text-center"
-            >{link.name}</a
-          >
-        {/each}
-      </div>
+
+    <div class="absolute top-full right-0 bg-background rounded-b-lg z-30 w-full md:w-64 overflow-hidden transition-all duration-300 ease-in-out" style="max-height: {showMenu ? '1000px' : '0'}; opacity: {showMenu ? '1' : '0'};">
+        <div class="flex flex-col py-2 transform transition-transform duration-300 ease-in-out" style="transform: translateY({showMenu ? '0' : '-100%'});">
+            {#each navLinks as link}
+                <a href={link.href} class="text-white hover:text-brand p-3 text-center text-base transition duration-200 animate-fade-in animate-slide-down">
+                    {link.name}
+                </a>
+            {/each}
+        </div>
     </div>
-  </div>
-  
-  <style>
-    .glow-effect {
-      transition: filter 0.3s ease;
+</div>
+
+<style>
+    :global(body) {
+        font-family: "Muli", sans-serif;
     }
-  
-    .glow-effect.active {
-      filter: drop-shadow(0 0 5px #ffffff69) drop-shadow(0 0 5px #ffffff6b);
-    }
-  
+
     /* Hide scrollbar in dropdown */
-    .dropdown .overflow-y-auto {
-      scrollbar-width: none;
+    .dropdown :global(.overflow-y-auto) {
+        scrollbar-width: none;
+        -ms-overflow-style: none;
     }
-  
-    .dropdown .overflow-y-auto::-webkit-scrollbar {
-      display: none;
+
+    .dropdown :global(.overflow-y-auto::-webkit-scrollbar) {
+        display: none;
     }
-  
-    /* Transition for dropdown */
-    .transition-all {
-      transition:
-        max-height 0.5s ease,
-        opacity 0.5s ease;
+
+    :global(.fa-cross) {
+        transition:
+            filter 0.3s ease,
+            color 0.3s ease;
     }
-  
-    a {
-      padding: 8px 12px;
-      position: relative;
-      display: inline-block;
+
+    :global(.group:hover .fa-cross) {
+        filter: drop-shadow(0 0 2px theme("colors.white")) drop-shadow(0 0 2px theme("colors.white"));
     }
-  
-    a:before {
-      content: "";
-      position: absolute;
-      left: 0;
-      bottom: 0;
-      width: 0;
-      height: 2px;
-      background-color: #7a288a;
-      transform: scaleX(0);
-      transition: transform 0.3s ease;
+
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+        }
+        to {
+            opacity: 1;
+        }
     }
-  
-    a:hover:before {
-      transform: scaleX(1);
-      width: 100%;
+
+    @keyframes slideDown {
+        from {
+            transform: translateY(-20px);
+        }
+        to {
+            transform: translateY(0);
+        }
     }
-  </style>
+
+    .dropdown :global(.animate-fade-in) {
+        animation: fadeIn 0.3s ease-out;
+    }
+
+    .dropdown :global(.animate-slide-down) {
+        animation: slideDown 0.3s ease-out;
+    }
+</style>
