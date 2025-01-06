@@ -37,7 +37,7 @@
             {#if mounted}
                 <div class="max-w-6xl mx-auto">
                     <h2 in:fly={{ y: -50, duration: 1000 }} class="text-4xl md:text-6xl font-extrabold text-gradient mb-8 text-center">About Us</h2>
-                    <p in:fade={{ duration: 1000, delay: 300 }} class="text-lg md:text-xl text-white mb-16 max-w-3xl mx-auto text-center leading-relaxed">Welcome to 417 Faith and Fellowship! Our journey began in 2024 with...</p>
+                    <p in:fade={{ duration: 1000, delay: 300 }} class="text-lg md:text-xl text-white mb-16 max-w-3xl mx-auto text-center leading-relaxed">Make Heaven Crowded</p>
 
                     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-12 mb-16">
                         {#each cards as card, index}

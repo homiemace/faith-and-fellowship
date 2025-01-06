@@ -1,0 +1,7 @@
+node_modules/
+*.log
+*.tsbuildinfo
+.svelte-kit/
+build/
+*.local
+.env

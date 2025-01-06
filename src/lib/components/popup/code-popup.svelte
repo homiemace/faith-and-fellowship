@@ -31,7 +31,7 @@
 </script>
 
 {#if showPopup}
-    <aside transition:fade={{ duration: 300 }} class="fixed z-50 flex items-center justify-between gap-2 p-3 rounded-lg shadow-lg card text-white max-w-[90%] sm:max-w-xs md:max-w-[18rem] lg:max-w-[16rem] bottom-20 right-4 md:right-0 md:left-1/2 md:-translate-x-1/2">
+    <aside transition:fade={{ duration: 300 }} class="fixed z-50 flex items-center justify-between gap-2 p-3 rounded-lg shadow-lg border border-gray-100/5 bg-background text-white max-w-[90%] sm:max-w-xs md:max-w-[18rem] lg:max-w-[16rem] bottom-20 right-4 md:right-0 md:left-1/2 md:-translate-x-1/2">
         <button class="flex-1 text-sm font-medium hover:text-brand transition duration-200 truncate" on:click={copyText}> 65BB-GBLQ </button>
         <button class="p-1 hover:bg-white/10 rounded" on:click={onClose} aria-label="Close popup">
             <i class="fa-solid fa-xmark"></i>

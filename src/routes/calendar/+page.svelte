@@ -9,7 +9,7 @@
             date: new Date("2024-12-17"),
             time: "7:00 PM",
             location: "Schweitzer Church",
-            category: "Worship",
+            category: "Fellowship",
             image: "_",
         },
         {
@@ -18,7 +18,7 @@
             date: new Date("2024-06-20"),
             time: "2:00 PM",
             location: "Creative Hub",
-            category: "Design",
+            category: "Fellowship",
             image: "https://images.unsplash.com/photo-1475721027785-f74eccf877e2?auto=format&fit=crop&q=80&w=1000",
         },
         {
@@ -34,7 +34,7 @@
 
     let searchQuery = "";
     let selectedCategory = "All";
-    const categories = ["All", "Worship", "Design", "Networking"];
+    const categories = ["All", "Fellowship", "Design", "Networking"];
 
     $: filteredEvents = events.filter((event) => {
         const matchesSearch = event.title.toLowerCase().includes(searchQuery.toLowerCase()) || event.location.toLowerCase().includes(searchQuery.toLowerCase());

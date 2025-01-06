@@ -75,13 +75,28 @@
     }
 
     :global(.fa-cross) {
+        color: white;
         transition:
             filter 0.3s ease,
             color 0.3s ease;
     }
 
+    @keyframes wrap-glow {
+        0% {
+            filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.8)) drop-shadow(0 0 12px rgba(255, 255, 255, 0.6));
+        }
+        50% {
+            filter: drop-shadow(0 0 9px rgba(255, 255, 255, 1)) drop-shadow(0 0 20px rgba(255, 255, 255, 0.8));
+        }
+        100% {
+            filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.8)) drop-shadow(0 0 12px rgba(255, 255, 255, 0.6));
+        }
+    }
+
     :global(.group:hover .fa-cross) {
-        filter: drop-shadow(0 0 2px theme("colors.white")) drop-shadow(0 0 2px theme("colors.white"));
+        filter: drop-shadow(0 0 6px rgba(255, 255, 255, 0.8)) drop-shadow(0 0 12px rgba(255, 255, 255, 0.6));
+        animation: wrap-glow 1.5s infinite;
+        color: white; /* Keeps the glow color consistent */
     }
 
     @keyframes fadeIn {
