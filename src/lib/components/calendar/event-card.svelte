@@ -3,7 +3,7 @@
     export let event;
 </script>
 
-<div class="group bg-event-card rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 hover:scale-[1.02]">
+<div class="group card rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 hover:scale-[1.02]">
     <div class="relative overflow-hidden">
         <img src={event.image} alt={event.title} class="w-full h-48 object-cover transition-transform duration-300 group-hover:scale-110" />
         <div class="absolute top-4 left-4">
@@ -13,7 +13,7 @@
         </div>
     </div>
     <div class="p-6">
-        <h2 class="text-xl font-semibold mb-3 text-white group-hover:text-event-accent transition-colors">
+        <h2 class="text-xl mb-3 text-white group-hover:text-brand transition-colors">
             {event.title}
         </h2>
         <div class="space-y-2 text-gray-400">

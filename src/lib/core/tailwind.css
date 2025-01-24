@@ -5,86 +5,32 @@
 /* Font Faces */
 @font-face {
   font-family: 'Muli';
-  src: url('/fonts/Muli.ttf') format('truetype');
+  src: url('/fonts/Muli-SemiBold.woff2') format('woff2');
   font-weight: 400;
   font-style: normal;
+  font-display: swap;
 }
 
 @font-face {
   font-family: 'Muli';
-  src: url('/fonts/Muli-Bold.ttf') format('truetype');
+  src: url('/fonts/Muli-Bold.woff2') format('woff2');
   font-weight: 700;
   font-style: normal;
-}
-
-@font-face {
-  font-family: 'Muli';
-  src: url('/fonts/Muli-BoldItalic.ttf') format('truetype');
-  font-weight: 700;
-  font-style: italic;
-}
-
-@font-face {
-  font-family: 'Muli';
-  src: url('/fonts/Muli-ExtraLight.ttf') format('truetype');
-  font-weight: 200;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: 'Muli';
-  src: url('/fonts/Muli-ExtraLightItalic.ttf') format('truetype');
-  font-weight: 200;
-  font-style: italic;
-}
-
-@font-face {
-  font-family: 'Muli';
-  src: url('/fonts/Muli-Italic.ttf') format('truetype');
-  font-weight: 400;
-  font-style: italic;
-}
-
-@font-face {
-  font-family: 'Muli';
-  src: url('/fonts/Muli-Light.ttf') format('truetype');
-  font-weight: 300;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: 'Muli';
-  src: url('/fonts/Muli-LightItalic.ttf') format('truetype');
-  font-weight: 300;
-  font-style: italic;
-}
-
-@font-face {
-  font-family: 'Muli';
-  src: url('/fonts/Muli-SemiBold.ttf') format('truetype');
-  font-weight: 600;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: 'Muli';
-  src: url('/fonts/Muli-Semi-BoldItalic.ttf') format('truetype');
-  font-weight: 600;
-  font-style: italic;
+  font-display: swap;
 }
 
 @font-face {
   font-family: 'PlayfairDisplay';
-  src: url('/fonts/PlayfairDisplay-Regular.ttf') format('truetype');
+  src: url('/fonts/PlayfairDisplay-Regular.woff2') format('woff2');
   font-weight: 400;
   font-style: normal;
+  font-display: swap;
 }
 
 @layer base {
   :root {
-    --color-brand: 17, 24, 39;
-    --color-brand-secondary: 122, 40, 138;
-    --color-brand-third: 203, 126, 218;
+    --color-primary: 17, 24, 39;
+    --color-secondary: 122, 40, 138;
     --color-background: 17, 24, 39;
     --color-text: 255, 255, 255;
     --color-text-secondary: 229, 229, 229;
@@ -102,10 +48,6 @@
     @apply h-full min-h-screen w-full overflow-x-hidden bg-background font-muli text-primary relative;
   }
 
-  #app {
-    @apply min-h-screen w-full m-0 p-0;
-  }
-
   a {
     @apply font-medium text-brand no-underline outline-none transition-colors duration-300;
   }
@@ -116,35 +58,6 @@
 }
 
 @layer components {
-  /* Layout Components */
-  .container-fluid {
-    @apply w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
-  }
-
-  .page-section {
-    @apply py-12 md:py-20;
-  }
-
-  /* Background Components */
-  .homepage-background {
-    @apply fixed inset-0 scale-110;
-    background-image: url('/images/faithandfellowshipbackground.webp');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    filter: blur(var(--blur-amount));
-    -webkit-filter: blur(var(--blur-amount));
-  }
-
-  .about-us-background {
-    @apply fixed inset-0 bg-gradient-to-r from-[#6b5b95] to-[#b3cde0] -z-10;
-  }
-
-  .overlay {
-    @apply fixed inset-0 bg-black/40 -z-10;
-  }
-
-  /* UI Components */
   .btn {
     @apply inline-block px-6 py-3 rounded-full font-semibold text-primary transition-all duration-300;
   }
@@ -162,39 +75,6 @@
   .nav-link {
     @apply relative text-primary hover:text-brand transition-colors duration-300;
   }
-
-  .gradient-text {
-    background-image: linear-gradient(to-right, #ff69b4, #007bff);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-  }
-
-  /* Animation Components */
-  .fade-in {
-    @apply opacity-0 transition-opacity duration-500 ease-in-out;
-  }
-
-  .fade-in.visible {
-    @apply opacity-100;
-  }
-
-  /* Typography Components */
-  .text-shadow {
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-  }
-
-  .quote {
-    @apply text-xl italic text-gray-700 my-6 p-4 border-l-4 border-brand bg-gray-50;
-  }
-
-  .citation {
-    @apply text-right text-base text-gray-600;
-  }
-
-  /* Popup Components */
-  #code-popup {
-    @apply max-w-[150px] transition-opacity duration-300 ease-in-out;
-  }
 }
 
 @layer utilities {
@@ -205,7 +85,7 @@
   .bg-gradient {
     @apply bg-gradient-to-br from-background via-backgroundSecondary to-background-900;
   }
-
+  
   .backdrop-blur {
     backdrop-filter: blur(var(--blur-amount));
     -webkit-backdrop-filter: blur(var(--blur-amount));
@@ -214,10 +94,4 @@
   .hover-scale {
     @apply hover:scale-105 transition-transform duration-300;
   }
-
-  @keyframes float {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-20px); }
-  }
 }
-

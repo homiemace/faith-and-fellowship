@@ -1,7 +1,13 @@
 <script lang="ts">
+    // Svelte
     import { onMount } from "svelte";
 
-    let navLinks = [
+    interface NavLink {
+        name: string;
+        href: string;
+    }
+
+    let navLinks: NavLink[] = [
         { name: "Home", href: "/" },
         { name: "About", href: "/about" },
         { name: "Calendar", href: "/calendar" },
@@ -9,7 +15,7 @@
         { name: "Contact", href: "/contact" },
     ];
 
-    let showMenu = false;
+    let showMenu: boolean = false;
 
     function toggleMenu() {
         showMenu = !showMenu;
@@ -42,7 +48,7 @@
                 {/each}
             </nav>
 
-            <button class="md:hidden focus:outline-none group" on:click|preventDefault={toggleMenu} aria-label="Toggle Menu">
+            <button class="md:hidden focus:outline-none group" on:click|preventDefault={toggleMenu} aria-label="Toggle Menu" aria-expanded={showMenu}>
                 <i class="fas fa-cross text-white text-3xl transition-all duration-300 ease-in-out group-hover:text-white"></i>
             </button>
         </div>
@@ -60,10 +66,6 @@
 </div>
 
 <style>
-    :global(body) {
-        font-family: "Muli", sans-serif;
-    }
-
     /* Hide scrollbar in dropdown */
     .dropdown :global(.overflow-y-auto) {
         scrollbar-width: none;

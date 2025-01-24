@@ -1,6 +1,11 @@
-// See https://kit.svelte.dev/docs/types#app
-// for information about these interfaces
+// src/app.d.ts
 declare global {
+    namespace svelte.JSX {
+        interface HTMLAttributes<T> {
+            "on:intersect"?: (event: CustomEvent) => void;
+        }
+    }
+
     namespace App {
         // interface Error {}
         // interface Locals {}

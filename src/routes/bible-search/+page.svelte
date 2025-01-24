@@ -8,13 +8,13 @@
     import VerseDisplay from "$lib/components/bible-search/verse-display.svelte";
     import ParallaxBackground from "$lib/components/about/parallax-background.svelte";
 
-    let query = "";
+    let query: string = "";
     let verseData: SearchResult | null = null;
-    let errorMessage = "";
-    let isLoading = false;
-    let showError = false;
-    let showVerseData = false;
-    let mounted = false;
+    let errorMessage: string = "";
+    let isLoading: boolean = false;
+    let showError: boolean = false;
+    let showVerseData: boolean = false;
+    let mounted: boolean = false;
 
     onMount(() => {
         mounted = true;
@@ -54,20 +54,20 @@
     }
 </script>
 
-<div class="min-h-screen">
-    <ParallaxBackground />
+<ParallaxBackground />
 
-    <div class="container mx-auto px-4 py-12 md:py-24 max-w-4xl">
+<div class="flex-1 flex flex-col">
+    <div class="container mx-auto px-4 py-12 md:py-24 max-w-4xl flex-1">
         {#if mounted}
-            <h1 in:fly={{ y: -50, duration: 1000, delay: 300 }} class="text-4xl sm:text-5xl md:text-6xl font-bold mb-12 text-center bg-clip-text text-transparent bg-gradient-to-r from-brand to-brandSecondary">Bible Verse Search</h1>
+            <h1 in:fly={{ y: -50, duration: 500 }} class="text-4xl sm:text-5xl md:text-6xl font-bold mb-12 text-center bg-clip-text text-transparent bg-gradient-to-r from-brand to-brandSecondary">Bible Verse Search</h1>
 
             <!-- Search Section -->
-            <section class="mb-12" in:fly={{ y: 50, duration: 1000, delay: 600 }}>
+            <section in:fly={{ y: 50, duration: 500 }} class="mb-12">
                 <SearchBar bind:query {isLoading} on:search={handleSearch} />
             </section>
 
             <!-- Instructions Section -->
-            <section class="mb-12 bg-background/5 border border-gray-100/5 backdrop-blur-sm rounded-lg p-6" in:fly={{ y: 50, duration: 1000, delay: 900 }}>
+            <section in:fly={{ y: 50, duration: 500 }} class="mb-12 bg-background/5 border border-gray-100/5 backdrop-blur-sm rounded-lg p-6">
                 <h2 class="text-2xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-brand to-brandSecondary">Instructions and Tips</h2>
                 <p class="text-lg mb-2 text-white/90">
                     Enter a scripture reference in the format: <strong>Book Chapter:Verse</strong>
@@ -76,7 +76,7 @@
             </section>
 
             <!-- Popular Verses Section -->
-            <section class="mb-12" in:fly={{ y: 50, duration: 1000, delay: 1200 }}>
+            <section in:fly={{ y: 50, duration: 500 }} class="mb-12">
                 <h2 class="text-2xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-brand to-brandSecondary">Popular Verses</h2>
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                     {#each popularVerses as verse, i}
@@ -87,14 +87,14 @@
 
             <!-- Messages and Results -->
             {#if showError}
-                <p class="text-red-300 text-lg mb-4 p-4 bg-red-900/50 rounded-lg flex items-center gap-2" in:fly={{ y: 20, duration: 300 }} out:fade>
+                <p class="text-red-300 text-lg mb-4 p-4 bg-red-900/50 rounded-lg flex items-center gap-2" in:fly={{ y: 20, duration: 300 }} out:fade aria-live="polite">
                     <i class="fa-solid fa-circle-exclamation"></i>
                     {errorMessage}
                 </p>
             {/if}
 
             {#if isLoading}
-                <div class="flex items-center justify-center mb-4" in:fade={{ duration: 300 }} out:fade>
+                <div class="flex items-center justify-center mb-4" in:fade={{ duration: 300 }} out:fade aria-live="polite">
                     <l-hourglass size="40" bg-opacity="0.1" speed="1.75" color="white"></l-hourglass>
                 </div>
             {/if}

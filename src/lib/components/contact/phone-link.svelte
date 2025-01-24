@@ -18,12 +18,13 @@
         <span class="whitespace-nowrap">{phone}</span>
     </a>
 
-    <button on:click={copyToClipboard} class="ml-2 duration-200 text-light hover:text-brand" title="Copy phone number">
+    <!-- Add aria-label for accessibility -->
+    <button on:click={copyToClipboard} class="ml-2 duration-200 text-light hover:text-brand" aria-label="Copy phone number">
         <i class="fa-solid fa-copy w-4 h-4"></i>
     </button>
 
     {#if isCopied}
-        <div class="absolute -top-8 left-1/2 transform -translate-x-1 card text-light text-sm py-1 px-2 rounded shadow-lg animate-fade-up">Copied!</div>
+        <div class="absolute -top-8 left-1/2 transform -translate-x-1/2 card text-light text-sm py-1 px-2 rounded shadow-lg animate-fade-up">Copied!</div>
     {/if}
 </div>
 
