@@ -51,7 +51,7 @@
     }
 </script>
 
-<main class="p-6">
+<main class="min-h-screen flex-1 p-6">
     <!-- Decorative crosses in the background -->
     <div class="absolute inset-0 overflow-hidden">
         {#each Array(8) as _, index}
