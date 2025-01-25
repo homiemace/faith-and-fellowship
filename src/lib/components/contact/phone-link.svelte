@@ -24,7 +24,7 @@
     </button>
 
     {#if isCopied}
-        <div class="absolute -top-8 left-1/2 transform -translate-x-1/2 card text-light text-sm py-1 px-2 rounded shadow-lg animate-fade-up">Copied!</div>
+        <div class="absolute -top-8 left-1/2 transform -translate-x-1/2 border border-gray-100/5 bg-background text-light text-sm py-1 px-2 rounded shadow-lg">Copied!</div>
     {/if}
 </div>
 
