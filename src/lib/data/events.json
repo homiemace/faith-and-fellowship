@@ -1,5 +1,14 @@
 [
     {
+        "id": 2,
+        "title": "Faith & Fellowship Month 7",
+        "date": "2025-02-28",
+        "time": "7:00 PM",
+        "location": "Second Baptist Church",
+        "category": "February",
+        "image": "/images/febevent1.webp"
+    },
+    {
         "id": 1,
         "title": "Faith & Fellowship Month 6",
         "date": "2025-01-27",
