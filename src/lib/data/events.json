@@ -1,5 +1,14 @@
 [
     {
+        "id": 3,
+        "title": "Faith & Fellowship Month 8",
+        "date": "2025-03-24",
+        "time": "7:00 PM",
+        "location": "Red Tree Church",
+        "category": "March",
+        "image": "/images/marchevent1.webp"
+    },
+    {
         "id": 2,
         "title": "Faith & Fellowship Month 7",
         "date": "2025-02-28",

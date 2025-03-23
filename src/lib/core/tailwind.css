@@ -1,97 +1,142 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
 
-/* Font Faces */
-@font-face {
-  font-family: 'Muli';
-  src: url('/fonts/Muli-SemiBold.woff2') format('woff2');
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
+@theme {
+    --color-brand: #7a288a;
+    --color-brand-secondary: #cb7eda;
+    --color-brand-third: #cb7eda;
+    --color-primary: #ffffff;
+    --color-light: #e5e5e5;
+    --color-text: #ffffff;
+    --color-background-50: #90c0ef;
+    --color-background-100: #7eb5ed;
+    --color-background-200: #5aa1e8;
+    --color-background-300: #378de2;
+    --color-background-400: #1e78d2;
+    --color-background-500: #1964af;
+    --color-background-600: #144f8b;
+    --color-background-700: #0f3b67;
+    --color-background-800: #0a2744;
+    --color-background-900: #051220;
+    --color-background-950: #02080e;
+    --color-background: #111827;
+    --color-background-secondary: #060d15;
+    --color-border: #000000;
+    --radius-normal: 15px;
+
+    --font-muli: Muli, ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 }
 
-@font-face {
-  font-family: 'Muli';
-  src: url('/fonts/Muli-Bold.woff2') format('woff2');
-  font-weight: 700;
-  font-style: normal;
-  font-display: swap;
-}
+/*
+  The default border color has changed to `currentColor` in Tailwind CSS v4,
+  so we've added these compatibility styles to make sure everything still
+  looks the same as it did with Tailwind CSS v3.
 
-@font-face {
-  font-family: 'PlayfairDisplay';
-  src: url('/fonts/PlayfairDisplay-Regular.woff2') format('woff2');
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-}
-
+  If we ever want to remove these styles, we need to add an explicit border
+  color utility to any element that depends on these defaults.
+*/
 @layer base {
-  :root {
-    --color-primary: 17, 24, 39;
-    --color-secondary: 122, 40, 138;
-    --color-background: 17, 24, 39;
-    --color-text: 255, 255, 255;
-    --color-text-secondary: 229, 229, 229;
-    --transition-speed: 300ms;
-    --blur-amount: 8px;
-  }
-
-  html {
-    @apply h-full antialiased;
-    scroll-behavior: smooth;
-    -webkit-tap-highlight-color: transparent;
-  }
-
-  body {
-    @apply h-full min-h-screen w-full overflow-x-hidden bg-background font-muli text-primary relative;
-  }
-
-  a {
-    @apply font-medium text-brand no-underline outline-none transition-colors duration-300;
-  }
-
-  a:hover {
-    @apply text-white;
-  }
+    *,
+    ::after,
+    ::before,
+    ::backdrop,
+    ::file-selector-button {
+        border-color: var(--color-gray-200, currentColor);
+        input,
+        textarea,
+        select {
+            @apply text-text bg-background border border-gray-700 rounded-md p-2;
+        }
+    }
 }
 
-@layer components {
-  .btn {
-    @apply inline-block px-6 py-3 rounded-full font-semibold text-primary transition-all duration-300;
-  }
+@utility btn {
+    @apply inline-block px-6 py-3 rounded-full font-semibold text-text transition-all duration-300;
+}
 
-  .btn-primary {
-    @apply bg-gradient-to-r from-brand to-brandSecondary hover:shadow-lg hover:scale-105;
-  }
+@utility btn-primary {
+    @apply bg-linear-to-r from-brand to-brand-secondary text-text hover:shadow-lg hover:scale-105;
+}
 
-  .card {
+@utility card {
     @apply bg-background/5 backdrop-blur-lg rounded-xl shadow-lg p-6 
            hover:shadow-xl transition-all duration-300 hover:scale-105
            border border-gray-100/5;
-  }
+}
 
-  .nav-link {
-    @apply relative text-primary hover:text-brand transition-colors duration-300;
-  }
+@utility nav-link {
+    @apply relative text-text hover:text-brand transition-colors duration-300;
+}
+
+@utility text-gradient {
+    @apply bg-clip-text text-transparent bg-linear-to-r from-brand to-brand-secondary;
+}
+
+@utility bg-gradient {
+    @apply bg-linear-to-br from-background via-background-secondary to-background-900;
+}
+
+@utility backdrop-blur {
+    backdrop-filter: blur(var(--blur-amount));
+    -webkit-backdrop-filter: blur(var(--blur-amount));
+}
+
+@utility hover-scale {
+    @apply hover:scale-105 transition-transform duration-300;
 }
 
 @layer utilities {
-  .text-gradient {
-    @apply bg-clip-text text-transparent bg-gradient-to-r from-brand to-brandSecondary;
-  }
+    /* Font Faces */
+    @font-face {
+        font-family: "Muli";
+        src: url("/fonts/Muli-SemiBold.woff2") format("woff2");
+        font-weight: 400;
+        font-style: normal;
+        font-display: swap;
+    }
 
-  .bg-gradient {
-    @apply bg-gradient-to-br from-background via-backgroundSecondary to-background-900;
-  }
-  
-  .backdrop-blur {
-    backdrop-filter: blur(var(--blur-amount));
-    -webkit-backdrop-filter: blur(var(--blur-amount));
-  }
+    @font-face {
+        font-family: "Muli";
+        src: url("/fonts/Muli-Bold.woff2") format("woff2");
+        font-weight: 700;
+        font-style: normal;
+        font-display: swap;
+    }
 
-  .hover-scale {
-    @apply hover:scale-105 transition-transform duration-300;
-  }
+    @font-face {
+        font-family: "PlayfairDisplay";
+        src: url("/fonts/PlayfairDisplay-Regular.woff2") format("woff2");
+        font-weight: 400;
+        font-style: normal;
+        font-display: swap;
+    }
+}
+
+@layer base {
+    :root {
+        --color-background: rgb(17, 24, 39); /* Correct RGB syntax */
+        --color-primary: rgb(17, 24, 39);
+        --color-secondary: rgb(122, 40, 138);
+        --color-text: rgb(255, 255, 255);
+        --color-text-secondary: rgb(229, 229, 229);
+        --transition-speed: 300ms;
+        --blur-amount: 8px;
+    }
+
+    html {
+        @apply h-full antialiased;
+        scroll-behavior: smooth;
+        -webkit-tap-highlight-color: transparent;
+    }
+
+    body {
+        @apply h-full min-h-screen w-full overflow-x-hidden bg-background font-muli text-primary relative;
+    }
+
+    a {
+        @apply font-medium text-brand no-underline outline-hidden transition-colors duration-300;
+    }
+
+    a:hover {
+        @apply text-white;
+    }
 }

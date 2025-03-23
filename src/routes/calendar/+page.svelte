@@ -71,7 +71,7 @@
               type="text"
               placeholder="Search events by title or location..."
               bind:value={searchQuery}
-              class="w-full pl-12 pr-4 py-3 rounded-full bg-background placeholder-white/70 hover:shadow-lg border border-gray-100/5 focus:outline-none focus:ring-2 focus:ring-brand focus:border-transparent transition-all duration-300"
+              class="w-full pl-12 pr-4 py-3 rounded-full bg-background placeholder-white/70 hover:shadow-lg border border-gray-100/5 focus:outline-hidden focus:ring-2 focus:ring-brand focus:border-transparent transition-all duration-300"
               aria-label="Search events"
             />
           </div>
@@ -81,7 +81,7 @@
         <div class="relative flex-1">
           <select
             bind:value={selectedCategory}
-            class="w-full pl-4 pr-10 py-3 rounded-full bg-background placeholder-white/70 hover:shadow-lg border border-gray-100/5 focus:outline-none focus:ring-2 focus:ring-brand focus:border-transparent transition-all duration-300 appearance-none"
+            class="w-full pl-4 pr-10 py-3 rounded-full bg-background placeholder-white/70 hover:shadow-lg border border-gray-100/5 focus:outline-hidden focus:ring-2 focus:ring-brand focus:border-transparent transition-all duration-300 appearance-none"
             aria-label="Filter by month"
           >
             {#each categories as category}
@@ -103,7 +103,7 @@
               <img src={event.image} alt={event.title} class="w-full h-48 object-cover rounded-xl" />
               <!-- Event category badge -->
               <div class="absolute top-4 left-4">
-                <span class="px-3 py-1 btn-primary text-white rounded-full text-sm backdrop-blur-sm">
+                <span class="px-3 py-1 btn-primary text-white rounded-full text-sm backdrop-blur-xs">
                   {event.category}
                 </span>
               </div>

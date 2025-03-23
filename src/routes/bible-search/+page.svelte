@@ -59,7 +59,7 @@
 <div class="flex-1 flex flex-col">
     <div class="container mx-auto px-4 py-12 md:py-24 max-w-4xl flex-1">
         {#if mounted}
-            <h1 in:fly={{ y: -50, duration: 500 }} class="text-4xl sm:text-5xl md:text-6xl font-bold mb-12 text-center bg-clip-text text-transparent bg-gradient-to-r from-brand to-brandSecondary">Bible Verse Search</h1>
+            <h1 in:fly={{ y: -50, duration: 500 }} class="text-4xl sm:text-5xl md:text-6xl font-bold mb-12 text-center bg-clip-text text-transparent bg-linear-to-r from-brand to-brand-secondary">Bible Verse Search</h1>
 
             <!-- Search Section -->
             <section in:fly={{ y: 50, duration: 500 }} class="mb-12">
@@ -67,8 +67,8 @@
             </section>
 
             <!-- Instructions Section -->
-            <section in:fly={{ y: 50, duration: 500 }} class="mb-12 bg-background/5 border border-gray-100/5 backdrop-blur-sm rounded-lg p-6">
-                <h2 class="text-2xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-brand to-brandSecondary">Instructions and Tips</h2>
+            <section in:fly={{ y: 50, duration: 500 }} class="mb-12 bg-background/5 border border-gray-100/5 backdrop-blur-xs rounded-lg p-6">
+                <h2 class="text-2xl font-bold mb-4 bg-clip-text text-transparent bg-linear-to-r from-brand to-brand-secondary">Instructions and Tips</h2>
                 <p class="text-lg mb-2 text-white/90">
                     Enter a scripture reference in the format: <strong>Book Chapter:Verse</strong>
                 </p>
@@ -77,7 +77,7 @@
 
             <!-- Popular Verses Section -->
             <section in:fly={{ y: 50, duration: 500 }} class="mb-12">
-                <h2 class="text-2xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-brand to-brandSecondary">Popular Verses</h2>
+                <h2 class="text-2xl font-bold mb-6 bg-clip-text text-transparent bg-linear-to-r from-brand to-brandSecondary">Popular Verses</h2>
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                     {#each popularVerses as verse, i}
                         <PopularVerseCard {verse} index={i} on:click={() => setQuery(verse.reference)} />

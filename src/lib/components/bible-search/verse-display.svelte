@@ -27,13 +27,13 @@
                 <i class="fa-solid fa-copy w-4 h-4"></i>
             </button>
             {#if isCopied}
-                <div class="absolute -top-8 left-1/2 transform -translate-x-1/2 border border-gray-100/5 bg-background text-light text-sm py-1 px-2 rounded shadow-lg animate-fade-up">
+                <div class="absolute -top-8 left-1/2 transform -translate-x-1/2 border border-gray-100/5 bg-background text-light text-sm py-1 px-2 rounded-sm shadow-lg animate-fade-up">
                     Copied!
                 </div>
             {/if}
         </div>
     </h3>
-    <div class="text-xl mb-4 leading-relaxed prose prose-invert font-playfair">
+    <div class="text-xl mb-4 leading-relaxed prose prose-invert text-white/80 font-playfair">
         {verseData.text}
     </div>
     <p class="text-sm text-gray-300">

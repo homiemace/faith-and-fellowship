@@ -48,7 +48,7 @@
                 {/each}
             </nav>
 
-            <button class="md:hidden focus:outline-none group" on:click|preventDefault={toggleMenu} aria-label="Toggle Menu" aria-expanded={showMenu}>
+            <button class="md:hidden focus:outline-hidden group" on:click|preventDefault={toggleMenu} aria-label="Toggle Menu" aria-expanded={showMenu}>
                 <i class="fas fa-cross text-white text-3xl transition-all duration-300 ease-in-out group-hover:text-white"></i>
             </button>
         </div>

@@ -45,7 +45,7 @@
 </script>
 
 {#if showPopup}
-    <aside in:fly={{ y: 20, duration: 400, opacity: 0, easing: cubicOut }} out:fly={{ y: 20, duration: 400, opacity: 0, easing: cubicOut }} class="fixed z-[100] flex items-center justify-between gap-2 p-3 rounded-lg shadow-lg border border-gray-100/5 bg-background text-white max-w-[90%] sm:max-w-xs md:max-w-[18rem] lg:max-w-[16rem] bottom-40 md:bottom-40 left-1/2 -translate-x-1/2" aria-live="polite" role="alert">
+    <aside in:fly={{ y: 20, duration: 400, opacity: 0, easing: cubicOut }} out:fly={{ y: 20, duration: 400, opacity: 0, easing: cubicOut }} class="fixed z-100 flex items-center justify-between gap-2 p-3 rounded-lg shadow-lg border border-gray-100/5 bg-background text-white max-w-[90%] sm:max-w-xs md:max-w-[18rem] lg:max-w-[16rem] bottom-40 md:bottom-40 left-1/2 -translate-x-1/2" aria-live="polite" role="alert">
         <button class="flex-1 text-sm hover:text-brand transition duration-200 truncate" on:click={copyText} aria-label="Copy code 65BB-GBLQ">
             <div class="text-container">
                 <span class="text copied {isCopied ? 'active' : ''}" aria-hidden={!isCopied}> Copied! </span>
@@ -54,7 +54,7 @@
         </button>
 
         <!-- Close Button -->
-        <button class="close-button p-1 rounded" on:click={onClose} aria-label="Close popup">
+        <button class="close-button p-1 rounded-sm" on:click={onClose} aria-label="Close popup">
             <i class="fa-solid fa-xmark"></i>
         </button>
     </aside>

@@ -51,7 +51,7 @@
 
             <section class="py-6 md:py-8 lg:py-10 px-4 sm:px-6 md:px-8 text-center relative z-10">
                 <h3 class="text-3xl md:text-4xl lg:text-5xl font-bold mb-6 select-none text-white text-shadow-lg">Daily Inspiration for Your Journey</h3>
-                <blockquote class="p-4 sm:p-6 md:p-8 text-white-900 italic text-shadow-lg max-w-xl mx-auto h-full flex flex-col justify-between" style="line-height: 1.8; word-wrap: break-word;">
+                <blockquote class="p-4 sm:p-6 md:p-8 text-text italic text-shadow-lg max-w-xl mx-auto h-full flex flex-col justify-between" style="line-height: 1.8; word-wrap: break-word;">
                     {#if isLoading}
                         <div class="flex justify-center items-center h-full">
                             <span class="loader"></span>

@@ -7,13 +7,13 @@
     <div class="relative overflow-hidden">
         <img src={event.image} alt={event.title} class="w-full h-48 object-cover transition-transform duration-300 group-hover:scale-110" />
         <div class="absolute top-4 left-4">
-            <span class="px-3 py-1 bg-event-accent/90 text-white rounded-full text-sm backdrop-blur-sm">
+            <span class="px-3 py-1 bg-event-accent/90 text-text rounded-full text-sm backdrop-blur-xs">
                 {event.category}
             </span>
         </div>
     </div>
     <div class="p-6">
-        <h2 class="text-xl mb-3 text-white group-hover:text-brand transition-colors">
+        <h2 class="text-xl mb-3 text-text group-hover:text-brand transition-colors">
             {event.title}
         </h2>
         <div class="space-y-2 text-gray-400">
