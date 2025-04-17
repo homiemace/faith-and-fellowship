@@ -1,5 +1,14 @@
 [
     {
+        "id": 4,
+        "title": "Faith & Fellowship Month 9",
+        "date": "2025-04-21",
+        "time": "7:00 PM",
+        "location": "Phelps Groove Park",
+        "category": "April",
+        "image": "/images/aprilevent1.webp"
+    },
+    {
         "id": 3,
         "title": "Faith & Fellowship Month 8",
         "date": "2025-03-24",
